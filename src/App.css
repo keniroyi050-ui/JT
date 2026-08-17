@@ -1,0 +1,462 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #f6f5f8;
+  color: #24232b;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+}
+
+.sidebar {
+  width: 220px;
+  height: 100vh;
+
+  position: fixed;
+  left: 0;
+  top: 0;
+
+  background: #272532;
+  color: white;
+
+  padding: 25px 15px;
+
+  transition: 0.3s;
+}
+
+.sidebar.small {
+  width: 70px;
+}
+
+.sidebar h2 {
+  margin: 0 0 40px;
+  padding-left: 10px;
+
+  font-size: 18px;
+  white-space: nowrap;
+}
+
+.sidebar.small h2 {
+  font-size: 0;
+}
+
+.sidebar.small h2::after {
+  content: "JT";
+  font-size: 18px;
+}
+
+.menu {
+  width: 100%;
+  padding: 12px 10px;
+
+  border: none;
+  border-radius: 8px;
+
+  background: transparent;
+  color: #aaa7b5;
+
+  text-align: left;
+  font-size: 14px;
+
+  margin-bottom: 5px;
+}
+
+.menu:hover,
+.menu.active {
+  background: #393646;
+  color: white;
+}
+
+.sidebar.small .menu {
+  font-size: 0;
+  text-align: center;
+}
+
+.sidebar.small .menu::before {
+  content: "•";
+  font-size: 20px;
+}
+
+.collapse {
+  position: absolute;
+  bottom: 25px;
+  left: 15px;
+
+  width: calc(100% - 30px);
+  padding: 10px;
+
+  border: none;
+  border-radius: 8px;
+
+  background: #393646;
+  color: white;
+}
+
+.main {
+  margin-left: 220px;
+  padding: 40px;
+
+  transition: 0.3s;
+}
+
+.main.wide {
+  margin-left: 70px;
+}
+
+.top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  margin-bottom: 30px;
+}
+
+.top h1 {
+  margin: 0 0 6px;
+  font-size: 28px;
+}
+
+.top p {
+  margin: 0;
+  color: #888590;
+}
+
+.add-button {
+  border: none;
+  border-radius: 8px;
+
+  padding: 12px 18px;
+
+  background: #8066d9;
+  color: white;
+
+  font-weight: bold;
+}
+
+.add-button:hover {
+  background: #6f55c8;
+}
+
+.stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 15px;
+
+  margin-bottom: 25px;
+}
+
+.card {
+  background: white;
+
+  border: 1px solid #e8e6eb;
+  border-radius: 12px;
+
+  padding: 20px;
+}
+
+.card p {
+  margin: 0 0 12px;
+
+  color: #888590;
+  font-size: 14px;
+}
+
+.card h2 {
+  margin: 0;
+  font-size: 28px;
+}
+
+.jobs {
+  background: white;
+
+  border: 1px solid #e8e6eb;
+  border-radius: 12px;
+
+  padding: 25px;
+}
+
+.jobs > h2 {
+  margin: 0 0 25px;
+  font-size: 18px;
+}
+
+.empty {
+  border: 1px dashed #d8d5df;
+  border-radius: 10px;
+
+  padding: 60px 20px;
+
+  text-align: center;
+}
+
+.empty-icon {
+  width: 45px;
+  height: 45px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  margin: 0 auto 15px;
+
+  border-radius: 50%;
+
+  background: #eeeafd;
+  color: #8066d9;
+
+  font-size: 25px;
+}
+
+.empty h3 {
+  margin: 0 0 8px;
+  font-size: 17px;
+}
+
+.empty p {
+  max-width: 350px;
+  margin: 0 auto 20px;
+
+  color: #888590;
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+@media (max-width: 700px) {
+  .sidebar {
+    width: 70px;
+  }
+
+  .sidebar h2 {
+    font-size: 0;
+  }
+
+  .sidebar h2::after {
+    content: "JT";
+    font-size: 18px;
+  }
+
+  .menu {
+    font-size: 0;
+    text-align: center;
+  }
+
+  .menu::before {
+    content: "•";
+    font-size: 20px;
+  }
+
+  .main,
+  .main.wide {
+    margin-left: 70px;
+    padding: 25px 15px;
+  }
+
+  .top {
+    align-items: flex-start;
+    gap: 20px;
+  }
+
+  .top h1 {
+    font-size: 23px;
+  }
+
+  .stats {
+    grid-template-columns: 1fr;
+  }
+}
+/* Add Job Page */
+
+.add-job-container {
+  min-height: 100vh;
+  background: #f6f5f8;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  padding: 40px;
+}
+
+/* Modal */
+
+.add-job-modal {
+  width: 100%;
+  max-width: 550px;
+
+  background: white;
+
+  border: 1px solid #e8e6eb;
+  border-radius: 12px;
+
+  padding: 30px;
+
+  box-shadow: 0 4px 15px rgba(36, 35, 43, 0.08);
+}
+
+/* Header */
+
+.add-job-modal h1 {
+  margin: 0 0 6px;
+
+  font-size: 24px;
+  color: #24232b;
+}
+
+.subtitle {
+  margin: 0 0 25px;
+
+  color: #888590;
+  font-size: 14px;
+}
+
+/* Form */
+
+.form-group {
+  margin-bottom: 18px;
+}
+
+.form-group label {
+  display: block;
+
+  margin-bottom: 7px;
+
+  color: #24232b;
+
+  font-size: 14px;
+  font-weight: bold;
+}
+
+/* Inputs */
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+  width: 100%;
+
+  padding: 11px 12px;
+
+  border: 1px solid #e8e6eb;
+  border-radius: 8px;
+
+  background: white;
+
+  color: #24232b;
+
+  font-family: inherit;
+  font-size: 14px;
+
+  outline: none;
+}
+
+/* Input focus */
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  border-color: #8066d9;
+
+  box-shadow: 0 0 0 2px #eeeafd;
+}
+
+/* Placeholder */
+
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+  color: #aaa7b5;
+}
+
+/* Textarea */
+
+.form-group textarea {
+  resize: vertical;
+  min-height: 90px;
+}
+
+.button-group {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+
+  margin-top: 25px;
+}
+
+.button-group button {
+  padding: 11px 18px;
+
+  border: none;
+  border-radius: 8px;
+
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: bold;
+
+  cursor: pointer;
+}
+
+.cancel-btn {
+  background: #eeeafd;
+  color: #8066d9;
+}
+
+.cancel-btn:hover {
+  background: #e2ddfa;
+}
+
+.add-btn {
+  background: #8066d9;
+  color: white;
+}
+
+.add-btn:hover {
+  background: #6f55c8;
+}
+
+@media (max-width: 700px) {
+  .add-job-container {
+    padding: 20px 15px;
+
+    align-items: flex-start;
+  }
+
+  .add-job-modal {
+    margin-top: 20px;
+
+    padding: 22px;
+  }
+
+  .add-job-modal h1 {
+    font-size: 22px;
+  }
+
+  .button-group {
+    flex-direction: column;
+  }
+
+  .button-group button {
+    width: 100%;
+  }
+}
+.add-job-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+
+  width: 100%;
+  height: 100vh;
+
+  background: rgba(39, 37, 50, 0.45);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  padding: 20px;
+
+  z-index: 1000;
+}
