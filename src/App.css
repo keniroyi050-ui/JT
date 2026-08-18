@@ -270,7 +270,7 @@ button {
     grid-template-columns: 1fr;
   }
 }
-/* Add Job Page */
+
 
 .add-job-container {
   min-height: 100vh;
@@ -283,7 +283,7 @@ button {
   padding: 40px;
 }
 
-/* Modal */
+
 
 .add-job-modal {
   width: 100%;
@@ -299,7 +299,7 @@ button {
   box-shadow: 0 4px 15px rgba(36, 35, 43, 0.08);
 }
 
-/* Header */
+
 
 .add-job-modal h1 {
   margin: 0 0 6px;
@@ -314,8 +314,6 @@ button {
   color: #888590;
   font-size: 14px;
 }
-
-/* Form */
 
 .form-group {
   margin-bottom: 18px;
@@ -332,7 +330,6 @@ button {
   font-weight: bold;
 }
 
-/* Inputs */
 
 .form-group input,
 .form-group select,
@@ -354,7 +351,6 @@ button {
   outline: none;
 }
 
-/* Input focus */
 
 .form-group input:focus,
 .form-group select:focus,
@@ -459,4 +455,118 @@ button {
   padding: 20px;
 
   z-index: 1000;
+}
+.login-container {
+  min-height: 100vh;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  padding: 20px;
+
+  background: #f6f5f8;
+}
+
+.login-card {
+  width: 100%;
+  max-width: 400px;
+
+  padding: 30px;
+
+  background: white;
+
+  border: 1px solid #e8e6eb;
+  border-radius: 12px;
+
+  box-shadow: 0 4px 15px rgba(36, 35, 43, 0.08);
+}
+
+.login-card h1 {
+  margin: 0 0 6px;
+
+  color: #24232b;
+  font-size: 26px;
+}
+
+.login-subtitle {
+  margin: 0 0 25px;
+
+  color: #888590;
+  font-size: 14px;
+}
+
+.login-group {
+  margin-bottom: 18px;
+}
+
+.login-group label {
+  display: block;
+
+  margin-bottom: 7px;
+
+  color: #24232b;
+
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.login-group input {
+  width: 100%;
+
+  padding: 11px 12px;
+
+  border: 1px solid #e8e6eb;
+  border-radius: 8px;
+
+  font-family: inherit;
+  font-size: 14px;
+
+  outline: none;
+}
+
+.login-group input:focus {
+  border-color: #8066d9;
+
+  box-shadow: 0 0 0 2px #eeeafd;
+}
+
+.login-group input::placeholder {
+  color: #aaa7b5;
+}
+
+.login-button {
+  width: 100%;
+
+  padding: 12px;
+
+  border: none;
+  border-radius: 8px;
+
+  background: #8066d9;
+  color: white;
+
+  font-size: 14px;
+  font-weight: bold;
+
+  cursor: pointer;
+}
+
+.login-button:hover {
+  background: #6f55c8;
+}
+
+.signup-text {
+  margin: 20px 0 0;
+
+  text-align: center;
+
+  color: #888590;
+  font-size: 13px;
+}
+
+.signup-text span {
+  color: #8066d9;
+  font-weight: bold;
+  cursor: pointer;
 }
