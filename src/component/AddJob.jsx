@@ -9,18 +9,27 @@ const AddJob = ({ onClose }) => {
   const [status, setStatus] = useState("Applied");
   const [dateApplied, setDateApplied] = useState("");
   const [notes, setNotes] = useState("");
+  const handleSubmit = () => {
+    const job = [
+      jobTitle,
+      company,
+      jobUrl,
+      location,
+      status,
+      dateApplied,
+      notes,
+    ];
+    return job;
+  };
 
   return (
     <div className="add-job-container">
       <div className="add-job-modal">
         <h1>Add Job</h1>
 
-        <p className="subtitle">
-          Add a new job to your tracker
-        </p>
+        <p className="subtitle">Add a new job to your tracker</p>
 
-        <form>
-          {/* Job Title */}
+        <form onSubmit={handleSubmit}>
           <div className="form-group">
             <label>Job Title</label>
 
@@ -43,7 +52,6 @@ const AddJob = ({ onClose }) => {
             />
           </div>
 
-          
           <div className="form-group">
             <label>Job URL</label>
 
@@ -70,10 +78,7 @@ const AddJob = ({ onClose }) => {
           <div className="form-group">
             <label>Status</label>
 
-            <select
-              value={status}
-              onChange={(e) => setStatus(e.target.value)}
-            >
+            <select value={status} onChange={(e) => setStatus(e.target.value)}>
               <option>Applied</option>
               <option>Interview</option>
               <option>Offer</option>
@@ -91,7 +96,6 @@ const AddJob = ({ onClose }) => {
             />
           </div>
 
-          
           <div className="form-group">
             <label>Notes</label>
 
@@ -103,13 +107,8 @@ const AddJob = ({ onClose }) => {
             ></textarea>
           </div>
 
-          
           <div className="button-group">
-            <button
-              type="button"
-              className="cancel-btn"
-              onClick={onClose}
-            >
+            <button type="button" className="cancel-btn" onClick={onClose}>
               Cancel
             </button>
 
@@ -122,6 +121,5 @@ const AddJob = ({ onClose }) => {
     </div>
   );
 };
-
 
 export default AddJob;
