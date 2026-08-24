@@ -271,10 +271,9 @@ button {
   }
 }
 
-
 .add-job-container {
   min-height: 100vh;
-  background: #f6f5f8;
+  background: #2b0479;
 
   display: flex;
   justify-content: center;
@@ -282,8 +281,6 @@ button {
 
   padding: 40px;
 }
-
-
 
 .add-job-modal {
   width: 100%;
@@ -298,8 +295,6 @@ button {
 
   box-shadow: 0 4px 15px rgba(36, 35, 43, 0.08);
 }
-
-
 
 .add-job-modal h1 {
   margin: 0 0 6px;
@@ -330,7 +325,6 @@ button {
   font-weight: bold;
 }
 
-
 .form-group input,
 .form-group select,
 .form-group textarea {
@@ -350,7 +344,6 @@ button {
 
   outline: none;
 }
-
 
 .form-group input:focus,
 .form-group select:focus,
