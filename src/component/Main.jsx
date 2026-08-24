@@ -3,7 +3,12 @@ import AddJob from "./AddJob";
 
 const Main = ({ sidebarOpen }) => {
   const [showModal, setShowModal] = useState(false);
+  const [jobs, setJobs] = useState([]);
 
+  const handleJobs = (job) => {
+    setJobs([...jobs, job]);
+    setShowModal(false);
+  };
   return (
     <div>
       <div className={sidebarOpen ? "main" : "main wide"}>

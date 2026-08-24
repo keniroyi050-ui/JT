@@ -19,7 +19,8 @@ const AddJob = ({ onClose }) => {
       dateApplied,
       notes,
     ];
-    return job;
+    
+    handleJobs(job);
   };
 
   return (
