@@ -1,14 +1,35 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import AddJob from "./AddJob";
+import JobDetails from "./JobDetails";
 
 const Main = ({ sidebarOpen }) => {
   const [showModal, setShowModal] = useState(false);
   const [jobs, setJobs] = useState([]);
+  const [selectedJob, setSelectedJob] = useState(null);
 
   const handleJobs = (job) => {
     setJobs([...jobs, job]);
     setShowModal(false);
   };
+
+  // Hide sidebar when viewing job details
+  useEffect(() => {
+    if (selectedJob) {
+      document.body.classList.add("job-details-open");
+    } else {
+      document.body.classList.remove("job-details-open");
+    }
+
+    // Clean up when leaving the component
+    return () => {
+      document.body.classList.remove("job-details-open");
+    };
+  }, [selectedJob]);
+
+  // Show Job Details
+  if (selectedJob) {
+    return <JobDetails job={selectedJob} onBack={() => setSelectedJob(null)} />;
+  }
 
   return (
     <div>
@@ -61,10 +82,17 @@ const Main = ({ sidebarOpen }) => {
           ) : (
             <div>
               {jobs.map((job, index) => (
-                <div className="card" key={index}>
+                <div
+                  className="card job-card"
+                  key={index}
+                  onClick={() => setSelectedJob(job)}
+                >
                   <h3>{job.jobTitle}</h3>
+
                   <p>{job.company}</p>
+
                   <p>{job.location}</p>
+
                   <p>{job.status}</p>
                 </div>
               ))}
@@ -72,6 +100,8 @@ const Main = ({ sidebarOpen }) => {
           )}
         </div>
       </div>
+
+      {/* Add Job Modal */}
 
       {showModal && (
         <AddJob onClose={() => setShowModal(false)} handleJobs={handleJobs} />

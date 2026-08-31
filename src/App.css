@@ -563,3 +563,328 @@ button {
   font-weight: bold;
   cursor: pointer;
 }
+
+.job-details-container {
+  min-height: 100vh;
+
+  background: #f6f5f8;
+
+  padding: 40px;
+}
+
+/* Header */
+
+.job-details-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  margin-bottom: 25px;
+}
+
+.back-button {
+  border: none;
+  background: transparent;
+
+  color: #8066d9;
+
+  font-size: 14px;
+  font-weight: bold;
+
+  cursor: pointer;
+}
+
+.job-actions {
+  display: flex;
+  gap: 10px;
+}
+
+.edit-button,
+.delete-button {
+  padding: 9px 15px;
+
+  border-radius: 8px;
+
+  font-weight: bold;
+
+  cursor: pointer;
+}
+
+.edit-button {
+  border: 1px solid #e8e6eb;
+  background: white;
+  color: #24232b;
+}
+
+.delete-button {
+  border: none;
+  background: #f5eaea;
+  color: #c44;
+}
+
+/* Job Header */
+
+.job-header-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  background: white;
+
+  border: 1px solid #e8e6eb;
+  border-radius: 12px;
+
+  padding: 25px;
+
+  margin-bottom: 20px;
+}
+
+.job-header-card h1 {
+  margin: 0 0 8px;
+
+  font-size: 26px;
+  color: #24232b;
+}
+
+.company-name {
+  margin: 0 0 8px;
+
+  color: #8066d9;
+
+  font-weight: bold;
+}
+
+.job-location {
+  margin: 0;
+
+  color: #888590;
+  font-size: 14px;
+}
+
+/* Status */
+
+.status-badge {
+  padding: 8px 14px;
+
+  background: #eeeafd;
+  color: #8066d9;
+
+  border-radius: 20px;
+
+  font-size: 13px;
+  font-weight: bold;
+}
+
+/* Main Grid */
+
+.job-details-grid {
+  display: grid;
+
+  grid-template-columns: 2fr 1fr;
+
+  gap: 20px;
+}
+
+/* Cards */
+
+.details-card {
+  background: white;
+
+  border: 1px solid #e8e6eb;
+  border-radius: 12px;
+
+  padding: 22px;
+
+  margin-bottom: 20px;
+}
+
+.details-card h2 {
+  margin: 0 0 20px;
+
+  font-size: 17px;
+  color: #24232b;
+}
+
+/* Overview */
+
+.details-row {
+  display: grid;
+
+  grid-template-columns: repeat(3, 1fr);
+
+  gap: 20px;
+}
+
+.details-row span,
+.info-item span {
+  display: block;
+
+  margin-bottom: 6px;
+
+  color: #888590;
+
+  font-size: 12px;
+}
+
+.details-row strong,
+.info-item strong {
+  color: #24232b;
+
+  font-size: 14px;
+}
+
+/* Timeline */
+
+.timeline-item {
+  display: flex;
+
+  gap: 15px;
+
+  padding-bottom: 25px;
+}
+
+.timeline-dot {
+  width: 12px;
+  height: 12px;
+
+  flex-shrink: 0;
+
+  margin-top: 4px;
+
+  border-radius: 50%;
+
+  background: #8066d9;
+}
+
+.empty-dot {
+  background: #ddd;
+}
+
+.timeline-item h3 {
+  margin: 0 0 5px;
+
+  font-size: 14px;
+}
+
+.timeline-item p {
+  margin: 0;
+
+  color: #888590;
+
+  font-size: 13px;
+}
+
+/* Information */
+
+.info-item {
+  padding: 12px 0;
+
+  border-bottom: 1px solid #f0eef3;
+}
+
+.info-item:last-child {
+  border-bottom: none;
+}
+
+/* Notes */
+
+.notes {
+  margin: 0;
+
+  color: #66636f;
+
+  font-size: 14px;
+
+  line-height: 1.6;
+}
+
+/* Job Link */
+
+.job-link {
+  color: #8066d9;
+
+  font-size: 14px;
+  font-weight: bold;
+
+  text-decoration: none;
+}
+
+.job-link:hover {
+  text-decoration: underline;
+}
+
+/* Next Action */
+
+.next-action {
+  color: #66636f;
+
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.action-button {
+  width: 100%;
+
+  padding: 10px;
+
+  border: none;
+  border-radius: 8px;
+
+  background: #8066d9;
+  color: white;
+
+  font-weight: bold;
+
+  cursor: pointer;
+}
+
+.action-button:hover {
+  background: #6f55c8;
+}
+
+/* Mobile */
+
+@media (max-width: 700px) {
+  .job-details-container {
+    padding: 20px 15px;
+  }
+
+  .job-header-card {
+    align-items: flex-start;
+
+    flex-direction: column;
+
+    gap: 15px;
+  }
+
+  .job-details-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .details-row {
+    grid-template-columns: 1fr;
+    gap: 15px;
+  }
+
+  .job-details-header {
+    align-items: flex-start;
+  }
+}
+.job-card {
+  cursor: pointer;
+
+  transition: 0.2s;
+}
+
+.job-card:hover {
+  border-color: #8066d9;
+
+  transform: translateY(-2px);
+}
+body.job-details-open .sidebar {
+  display: none;
+}
+
+body.job-details-open .job-details-container {
+  margin-left: 0;
+}
