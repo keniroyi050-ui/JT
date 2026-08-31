@@ -9,6 +9,7 @@ const Main = ({ sidebarOpen }) => {
     setJobs([...jobs, job]);
     setShowModal(false);
   };
+
   return (
     <div>
       <div className={sidebarOpen ? "main" : "main wide"}>
@@ -26,7 +27,7 @@ const Main = ({ sidebarOpen }) => {
         <div className="stats">
           <div className="card">
             <p>Total Jobs</p>
-            <h2>0</h2>
+            <h2>{jobs.length}</h2>
           </div>
 
           <div className="card">
@@ -43,24 +44,38 @@ const Main = ({ sidebarOpen }) => {
         <div className="jobs">
           <h2>My Jobs</h2>
 
-          <div className="empty">
-            <div className="empty-icon">+</div>
+          {jobs.length === 0 ? (
+            <div className="empty">
+              <div className="empty-icon">+</div>
 
-            <h3>No jobs there yet</h3>
+              <h3>No jobs there yet</h3>
 
-            <p>
-              Start tracking your job applications by adding your first job.
-            </p>
+              <p>
+                Start tracking your job applications by adding your first job.
+              </p>
 
-            <button onClick={() => setShowModal(true)} className="add-button">
-              + Add Job
-            </button>
-          </div>
+              <button onClick={() => setShowModal(true)} className="add-button">
+                + Add Job
+              </button>
+            </div>
+          ) : (
+            <div>
+              {jobs.map((job, index) => (
+                <div className="card" key={index}>
+                  <h3>{job.jobTitle}</h3>
+                  <p>{job.company}</p>
+                  <p>{job.location}</p>
+                  <p>{job.status}</p>
+                </div>
+              ))}
+            </div>
+          )}
         </div>
       </div>
 
-      {/* Add Job Modal */}
-      {showModal && <AddJob onClose={() => setShowModal(false)} />}
+      {showModal && (
+        <AddJob onClose={() => setShowModal(false)} handleJobs={handleJobs} />
+      )}
     </div>
   );
 };

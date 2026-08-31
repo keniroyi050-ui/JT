@@ -1,7 +1,6 @@
-// import React, { useState } from "react";
-// import "App.css";
+import React, { useState } from "react";
 
-const AddJob = ({ onClose }) => {
+const AddJob = ({ onClose, handleJobs }) => {
   const [jobTitle, setJobTitle] = useState("");
   const [company, setCompany] = useState("");
   const [jobUrl, setJobUrl] = useState("");
@@ -9,8 +8,11 @@ const AddJob = ({ onClose }) => {
   const [status, setStatus] = useState("Applied");
   const [dateApplied, setDateApplied] = useState("");
   const [notes, setNotes] = useState("");
-  const handleSubmit = () => {
-    const job = [
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    const job = {
       jobTitle,
       company,
       jobUrl,
@@ -18,8 +20,8 @@ const AddJob = ({ onClose }) => {
       status,
       dateApplied,
       notes,
-    ];
-    
+    };
+
     handleJobs(job);
   };
 
@@ -28,9 +30,12 @@ const AddJob = ({ onClose }) => {
       <div className="add-job-modal">
         <h1>Add Job</h1>
 
-        <p className="subtitle">Add a new job to your tracker</p>
+        <p className="subtitle">
+          Add a new job to your tracker
+        </p>
 
         <form onSubmit={handleSubmit}>
+
           <div className="form-group">
             <label>Job Title</label>
 
@@ -75,11 +80,13 @@ const AddJob = ({ onClose }) => {
             />
           </div>
 
-          {/* Status */}
           <div className="form-group">
             <label>Status</label>
 
-            <select value={status} onChange={(e) => setStatus(e.target.value)}>
+            <select
+              value={status}
+              onChange={(e) => setStatus(e.target.value)}
+            >
               <option>Applied</option>
               <option>Interview</option>
               <option>Offer</option>
@@ -109,14 +116,24 @@ const AddJob = ({ onClose }) => {
           </div>
 
           <div className="button-group">
-            <button type="button" className="cancel-btn" onClick={onClose}>
+
+            <button
+              type="button"
+              className="cancel-btn"
+              onClick={onClose}
+            >
               Cancel
             </button>
 
-            <button type="submit" className="add-btn">
+            <button
+              type="submit"
+              className="add-btn"
+            >
               Add Job
             </button>
+
           </div>
+
         </form>
       </div>
     </div>
