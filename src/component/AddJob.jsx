@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 
 const AddJob = ({ onClose, handleJobs }) => {
   const [jobTitle, setJobTitle] = useState("");

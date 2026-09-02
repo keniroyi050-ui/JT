@@ -1,17 +1,28 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import AddJob from "./AddJob";
 import JobDetails from "./JobDetails";
 
 const Main = ({ sidebarOpen }) => {
   const [showModal, setShowModal] = useState(false);
-  const [jobs, setJobs] = useState([]);
+  const [jobs, setJobs] = useState(() => {
+    const savedJobs = localStorage.getItem("jobsTracker");
+    return savedJobs ? JSON.parse(savedJobs) : [];
+  });
   const [selectedJob, setSelectedJob] = useState(null);
 
+  useEffect(() => {
+    localStorage.setItem("jobsTracker", JSON.stringify(jobs));
+  }, [jobs]);
+
   const handleJobs = (job) => {
-    setJobs([...jobs, job]);
+    const jobWithId = { ...job, id: Date.now() };
+    setJobs((prevjobs)=>[jobWithId, ...prevjobs]);
     setShowModal(false);
   };
 
+  const interviewCount = jobs.filter((job) => job.status === "Interview").length;
+  const offerCount = jobs.filter((job) => job.status === "Offer").length;
+  
   // Hide sidebar when viewing job details
   useEffect(() => {
     if (selectedJob) {
@@ -53,12 +64,12 @@ const Main = ({ sidebarOpen }) => {
 
           <div className="card">
             <p>Interviews</p>
-            <h2>0</h2>
+            <h2>{interviewCount}</h2>
           </div>
 
           <div className="card">
             <p>Offers</p>
-            <h2>0</h2>
+            <h2>{offerCount}</h2>
           </div>
         </div>
 
