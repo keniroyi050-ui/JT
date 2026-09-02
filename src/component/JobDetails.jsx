@@ -85,7 +85,12 @@ const JobDetails = ({ job, onBack }) => {
                   <h3>Next Step</h3>
                   <p>Waiting for an update</p>
                 </div>
+               
               </div>
+               <div className="d-flex gap-5 m-3">
+                  <button className="action-button bg-success"  >Application Accepted</button>
+                  <button className="action-button bg-danger" >Application Rejected</button>
+                </div>
             </div>
           </div>
 

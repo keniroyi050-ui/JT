@@ -21,7 +21,6 @@ const AddJob = ({ onClose, handleJobs }) => {
       dateApplied,
       notes,
     };
-
     handleJobs(job);
   };
 
